@@ -1,6 +1,7 @@
 package com.theflopguyproductions.cybergraph;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
 
@@ -9,12 +10,26 @@ public class Main {
     public static void main(String[] args){
 
 //        setupListOne();
+//        setupConsoleDataInput();
 
         setupListTwo();
 
         GraphCreator graphCreator = new GraphCreator(inputList);
         graphCreator.computeGraph();
 
+    }
+
+    private static void setupConsoleDataInput() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the length of your list");
+        int length = sc.nextInt();
+        while(length>0){
+
+            System.out.print("Enter Value "+length+":");
+            inputList.add(sc.nextInt());
+
+            length--;
+        }
     }
 
     private static void setupListTwo() {
