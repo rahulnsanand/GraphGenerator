@@ -2,6 +2,23 @@ package com.theflopguyproductions.cybergraph;
 
 import java.util.ArrayList;
 
+/**
+ *
+ * This class helps generate the required graph in console of any Java IDE
+ * Developed by: Rahul Anand
+ * 25/08/2020
+ *
+ * Usage Instructions :
+ * 1) Initialise the class with the updated ArrayList<Integer>
+ * 2) Call the function computeGraph();
+ *
+ * Debugging info :
+ * 1) Make sure the list data is valid.
+ * 2) The first element of the list should always be greater than the second element.
+ * 3) Make sure the object of this class is initialised after the ArrayList<Integer> is initialised.
+ *
+ */
+
 public class GraphCreator {
 
     private final ArrayList<Integer> inputList;
@@ -9,6 +26,9 @@ public class GraphCreator {
     private boolean isPlus = true, currentPlusMinus = true;
     private int yMaxValue = 0, totalPlusMinusValue = 0, xValue = 0;
 
+    /**
+     * Constructor that should receive a valid input integer list as argument
+     */
     public GraphCreator(ArrayList<Integer> inputList) {
         this.inputList = inputList;
         setupMaxTotal();
@@ -33,6 +53,9 @@ public class GraphCreator {
         xValue += 1;
     }
 
+    /**
+     * A public function that manages the order of data execution
+     */
     public void computeGraph(){
         generateBaseMatrix();
         try {
@@ -44,6 +67,9 @@ public class GraphCreator {
 
     }
 
+    /**
+     * A loop with time complexity of n^2 for displaying the data in graph format
+     */
     private void displayMatrix() {
 
         isPlus = true;
@@ -75,11 +101,16 @@ public class GraphCreator {
 
     }
 
-
+    /**
+     * Assigning the generated maximum x and y value to the 2D Matrix Array
+     */
     private void generateBaseMatrix(){
         dimenArray = new int[xValue][yMaxValue];
     }
 
+    /**
+     * A function with time complexity of n^2 for populating the 2D Matrix Array with suitable values
+     */
     private void populateMatrix(){
 
         int initX = 0, initY = yMaxValue-1;
@@ -122,6 +153,9 @@ public class GraphCreator {
         }
     }
 
+    /**
+     * Updating the current total to keep a check on the position of the max value
+     */
     private int computeCurrentTotal(int currentTotal, int currentValue) {
         if (currentPlusMinus) {
             currentTotal += currentValue;
@@ -133,14 +167,23 @@ public class GraphCreator {
         return currentTotal;
     }
 
+    /**
+     * Setting forward slash
+     */
     private void setForwardSlash(int initX, int initY){
         dimenArray[initX][initY] = 1;
     }
 
+    /**
+     * Setting backward slash
+     */
     private void setBackwardSlash(int initX, int initY){
         dimenArray[initX][initY] = -1;
     }
 
+    /**
+     * Setting human figurine
+     */
     private void setHuman(int initX, int initY){
         dimenArray[initX][initY-2] = 7;
         dimenArray[initX+1][initY-2] = 5;

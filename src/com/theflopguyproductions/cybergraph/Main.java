@@ -12,7 +12,6 @@ public class Main {
 
         setupListTwo();
 
-
         GraphCreator graphCreator = new GraphCreator(inputList);
         graphCreator.computeGraph();
 
